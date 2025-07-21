@@ -89,4 +89,16 @@ pip install httpx
 python -m pytest -v
 
 pre-commit run --all-files
+
+# fix CI
+cat > setup.py <<EOL
+from setuptools import setup, find_packages
+
+setup(
+    name="app",
+    version="0.1",
+    packages=find_packages(),
+)
+EOL
+pip install -e .
 ```
